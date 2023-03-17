@@ -1,18 +1,27 @@
 @font-face {
   font-family: 'freight-text-pro-regular';
-  src: url('./Fonts/FreightTextProBook-Regular.otf') format('truetype');
+  src: url('./fonts/FreightTextProBook-Regular.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'freight-text-pro-bold';
-  src: url('.//Fonts/FreightTextProBold-Regular.otf') format('truetype');
+  src: url('.//fonts/FreightTextProBold-Regular.otf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
   font-family: 'freight-text-pro-light';
-  src: url('./Fonts/FreightTextProLight-Regular.otf') format('truetype');
+  src: url('./fonts/FreightTextProLight-Regular.otf') format('truetype');
   font-weight: normal;
   font-style: italic;
+}
+*{
+  background-color: white;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html{
+  font-size: 62.5%;
 }

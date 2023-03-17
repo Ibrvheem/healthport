@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import { ThemeProvider, createMuiTheme, Typography } from '@material-ui/core'
+import Navbar from './components/Navbar'
 
 
 const theme =  createMuiTheme({
@@ -23,7 +24,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      
+      <Navbar/>
     </ThemeProvider>
   )
 }
