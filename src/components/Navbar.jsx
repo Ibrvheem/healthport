@@ -141,7 +141,7 @@ function Navbar() {
             </div>
             <div className={classes.contactUs}>
                 <List className={classes.list} disablePadding>
-                    <ListItem disableGutters><HeadsetMicOutlined/> <span style={{width: '135px'}}> (234) 81 6308 9308</span></ListItem>
+                    <ListItem disableGutters><HeadsetMicOutlined/> <span style={{width: '135px', paddingLeft: '1rem'}}>(234) 80 555 5626</span></ListItem>
                     <ListItem disableGutters>
                         <Button variant='outlined' className={classes.button}>Login</Button>
                     </ListItem>
