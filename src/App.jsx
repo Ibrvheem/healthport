@@ -1,14 +1,15 @@
 import { useState } from 'react'
 import './App.css'
-import { ThemeProvider, createMuiTheme, Typography } from '@material-ui/core'
+import { ThemeProvider, createTheme, Typography } from '@material-ui/core'
 import Navbar from './components/Navbar'
+import Home from './Pages/Home'
 
 
-const theme =  createMuiTheme({
+const theme =  createTheme({
   palette:{
     primary:{
       main: '#49b0b6',
-      light: '#67bcc4',
+      light: '#899fa7',
       dark: '#36717d'
     },
     secondary:{
@@ -25,6 +26,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Navbar/>
+      <Home/>
     </ThemeProvider>
   )
 }
