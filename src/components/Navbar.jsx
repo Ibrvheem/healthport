@@ -1,6 +1,7 @@
 import { Button, Card, Collapse, Container, IconButton, List, ListItem, makeStyles } from '@material-ui/core'
 import { HeadsetMicOutlined, MenuRounded } from '@material-ui/icons'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Logo from '../assets/Images/Healthport-logo.png'
 
 
@@ -96,23 +97,28 @@ const useStyles = makeStyles((theme)=>{
 const menuLists = [
     {
         name: 'Oxygen Access',
+        path: '/oxygen',
         borderLeft: 'none'
     },
     {
         name: 'For Patients',
-        borderLeft: 'none'
+        path: '/patients',
+        borderLeft: 'none',
 
     },
     {
-        name: 'For Hospital',
+        name: 'For Hospitals',
+        path: '/hospitals',
         borderLeft: 'none'
     },
     {
         name: 'For Partners',
+        path: '/partners',
         borderLeft: 'none'
     },
     {
-        name: 'Oxiflow',
+        name: 'OXIFLOW',
+        path: '/oxiflow',
         borderLeft: '0.1rem solid gray'
 
     },
@@ -128,13 +134,13 @@ function Navbar() {
     <>
         <div className={classes.navbar}>
             <div className={classes.logo}>
-                <img src={Logo} className={classes.logoImage} alt="" /><span></span>
+                <Link to = '/'><img src={Logo} className={classes.logoImage} alt="" /></Link>
             </div>
             <div className={classes.menuList}>
                 <List className={classes.list}>
                     {
                         menuLists.map((menuList)=>{
-                            return (<ListItem key = {menuList.name}  className = {classes.listItem}  style={{width: 'auto', borderLeft: menuList.borderLeft}}>{menuList.name}</ListItem>)
+                            return (<ListItem key = {menuList.name}  className = {classes.listItem}  style={{width: 'auto', borderLeft: menuList.borderLeft}}><Link to = {menuList.path}>{menuList.name}</Link></ListItem>)
                         })
                     }
                 </List>

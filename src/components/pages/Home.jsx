@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button, Card, Container, Grid, makeStyles, Typography } from '@material-ui/core'
-import wave from '../assets/Images/background-wave.png'
-import heroSectionImage from '../assets/Images/hero-section-image.jpeg'
-import circle from '../assets/Images/circle.svg'
-import AboutSection from '../components/AboutSection'
+import wave from '../../assets/Images/background-wave.png'
+import heroSectionImage from '../../assets/Images/hero-section-image.jpeg'
+import circle from '../../assets/Images/circle.svg'
+import AboutSection from '../sections/AboutSection'
 
 const useStyles = makeStyles((theme)=>{
     return{
