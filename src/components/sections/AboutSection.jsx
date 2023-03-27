@@ -1,6 +1,6 @@
 import { Button, Container, Grid, makeStyles, Typography } from '@material-ui/core'
 import React from 'react'
-import mockup from '../assets/Images/mock-up.png'
+import mockup from '../../assets/Images/mock-up.png'
 
 
 

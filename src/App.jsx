@@ -2,7 +2,10 @@ import { useState } from 'react'
 import './App.css'
 import { ThemeProvider, createTheme, Typography } from '@material-ui/core'
 import Navbar from './components/Navbar'
-import Home from './Pages/Home'
+import Home from './components/pages/Home'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Patients from './components/pages/Patients'
+
 
 
 const theme =  createTheme({
@@ -25,8 +28,13 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Navbar/>
-      <Home/>
+      <BrowserRouter>
+        <Navbar/>
+        <Routes>
+          <Route exact path = '/' element = {<Home/>} />
+          <Route exact path = '/patients' element = {<Patients/>} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }
