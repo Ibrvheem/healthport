@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Home from './components/pages/Home'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Patients from './components/pages/Patients'
+import Hostipals from './components/pages/Hostipals'
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Routes>
           <Route exact path = '/' element = {<Home/>} />
           <Route exact path = '/patients' element = {<Patients/>} />
+          <Route exact path = '/hospitals' element = {<Hostipals/>} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
