@@ -8,10 +8,19 @@ import {
 } from "@material-ui/core";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import wave from "../../assets/Images/background-wave.png";
 import { radioInput, states, textInput } from "../../data.jsx/OaasData";
 
 const useStyles = makeStyles((theme) => {
   return {
+    oaas: {
+      height: "auto",
+      backgroundImage: `URL(${wave})`,
+      backgroundSize: "contain",
+      backgroundRepeat: "no-repeat",
+      paddingBottom: "5rem",
+      backgroundPosition: "bottom",
+    },
     h1: {
       fontSize: "5rem",
       color: "#002334",
@@ -174,7 +183,7 @@ function Oaas() {
   };
 
   return (
-    <div className={classes.Oaas}>
+    <div className={classes.oaas}>
       <Container>
         <Typography variant="h1" className={classes.h1}>
           Create your HealthPort Breathe account to enjoy our{" "}
