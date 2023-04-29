@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => {
       alignItems: "center",
       justifyContent: "space-between",
       borderBottom: ".1rem solid rgba(255, 255, 255, .1)",
+      marginBottom: "4rem",
       [theme.breakpoints.down("sm")]: {
         width: "100%",
       },
@@ -61,7 +62,13 @@ const useStyles = makeStyles((theme) => {
       flexDirection: "row",
       justifyContent: "flex-end",
       [theme.breakpoints.down("sm")]: {
-        flexDirection: "column",
+        flexDirection: "row",
+        flexWrap: "wrap",
+      },
+    },
+    footerNavList: {
+      [theme.breakpoints.down("sm")]: {
+        width: "50%",
       },
     },
     title: {
@@ -148,32 +155,32 @@ function Footer() {
                 <span>
                   <img
                     src="../../src/assets/Icons/twitterHealthPort.png"
-                    height="50rem"
-                    width="50rem"
+                    height="40rem"
+                    width="40rem"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     src="../../src/assets/Icons/facebookHealthPort.png"
-                    height="50rem"
-                    width="50rem"
+                    height="40rem"
+                    width="40rem"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     src="../../src/assets/Icons/instagramHealthPort.png"
-                    height="50rem"
-                    width="50rem"
+                    height="40rem"
+                    width="40rem"
                     alt=""
                   />
                 </span>
                 <span>
                   <img
                     src="../../src/assets/Icons/linkedinHealthPort.png"
-                    height="50rem"
-                    width="50rem"
+                    height="40rem"
+                    width="40rem"
                     alt=""
                   />
                 </span>
@@ -183,7 +190,7 @@ function Footer() {
           <Grid item md={7} sm={12} xs={12} className={classes.footerNav}>
             {footerData.map((data) => {
               return (
-                <List>
+                <List className={classes.footerNavList}>
                   <ListItem className={classes.title}>{data.title}</ListItem>
                   {data.content.map((item) => {
                     return (
