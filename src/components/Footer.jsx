@@ -137,19 +137,19 @@ function Footer() {
                 className={classes.h6}
                 style={{ color: "white", opacity: 0.7, fontWeight: 400 }}
               >
-                225 Broadway, 23 Flr., New York, NY 10007
+                Lagos, Nigeria.
               </ListItem>
               <ListItem
                 className={classes.h6}
                 style={{ color: "white", opacity: 0.7, fontWeight: 400 }}
               >
-                844-402-4344
+                (234) 80 555 5626
               </ListItem>
               <ListItem
                 className={classes.h6}
                 style={{ color: "white", opacity: 0.7, fontWeigh: 100 }}
               >
-                support@tomorrowhealth.com
+                support@healthport.com
               </ListItem>
               <ListItem className={classes.socialMedia}>
                 <span>
