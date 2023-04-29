@@ -1,39 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @font-face {
-  font-family: 'freight-text-pro-regular';
-  src: url('./fonts/FreightTextProBook-Regular.otf') format('truetype');
+  font-family: "freight-text-pro-regular";
+  src: url("./fonts/FreightTextProBook-Regular.otf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'freight-text-pro-bold';
-  src: url('.//fonts/FreightTextProBold-Regular.otf') format('truetype');
+  font-family: "freight-text-pro-bold";
+  src: url(".//fonts/FreightTextProBold-Regular.otf") format("truetype");
   font-weight: bold;
   font-style: normal;
 }
 @font-face {
-  font-family: 'freight-text-pro-light';
-  src: url('./fonts/FreightTextProLight-Regular.otf') format('truetype');
+  font-family: "freight-text-pro-light";
+  src: url("./fonts/FreightTextProLight-Regular.otf") format("truetype");
   font-weight: normal;
   font-style: italic;
 }
 @font-face {
-  font-family: 'Inter';
-  src: url('./fonts/Inter-Regular.ttf') format('truetype');
-  font-weight: bolder;
+  font-family: "Inter";
+  src: url("./fonts/Inter-Regular.ttf") format("truetype");
+  font-weight: normal;
   font-style: normal;
 }
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   background-color: white;
 }
-html{
+html {
   font-size: 62.5%;
 }
-a{
-  all:unset
+a {
+  all: unset;
 }

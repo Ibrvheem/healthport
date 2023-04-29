@@ -65,14 +65,7 @@ const useStyles = makeStyles((theme) => {
         fontSize: "4rem",
       },
     },
-    h3: {
-      fontSize: "4rem",
-      color: "#002334",
-      margin: "2rem 0rem",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "3rem",
-      },
-    },
+
     p: {
       fontSize: "1.8rem",
       color: "#002334",

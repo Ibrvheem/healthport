@@ -22,14 +22,7 @@ const useStyles = makeStyles((theme) => {
         fontSize: "2.7rem",
       },
     },
-    h3: {
-      fontSize: "4rem",
-      color: "#002334",
-      margin: "2rem 0rem",
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "3rem",
-      },
-    },
+
     h6: {
       fontSize: "1.3rem",
       fontWeight: 700,
