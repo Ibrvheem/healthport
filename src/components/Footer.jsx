@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import image from "../../src/assets/Images/healthport-logo.png";
+import image from "../../src/assets/Images/Healthport-logo.png";
 const useStyles = makeStyles((theme) => {
   return {
     footer: {
