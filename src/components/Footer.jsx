@@ -121,7 +121,7 @@ function Footer() {
           <Grid item md={12} className={classes.flexCenter}>
             <img
               className={classes.footerLogo}
-              src="../../src/assets/Images/healthport-logo-full.png"
+              src="../../src/assets/Images/Healthport-logo-full.png"
               alt=""
             />
             <Button className={classes.button}>Contact Us</Button>
