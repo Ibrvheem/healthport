@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 import image from "../../src/assets/Images/healthport-logo.png";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => {
   return {
     footer: {
@@ -124,7 +125,9 @@ function Footer() {
               src="../../src/assets/Images/healthport-logo-full.png"
               alt=""
             />
-            <Button className={classes.button}>Contact Us</Button>
+            <Link to="/contact">
+              <Button className={classes.button}>Contact Us</Button>
+            </Link>
           </Grid>
           <Grid item md={5} xs={12} sm={12}>
             <List>

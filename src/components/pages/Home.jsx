@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import wave from "../../assets/Images/background-wave.png";
-import heroSectionImage from "../../assets/Images/hero-section-image.jpeg";
+import heroSectionImage from "../../assets/Images/hero-section-image.png";
 import circle from "../../assets/Images/circle.svg";
 import AboutSection from "../sections/AboutSection";
 
@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => {
       },
     },
     gridContainer: {
-      // height: '75rem',
       display: "flex",
       alignItems: "center",
       [theme.breakpoints.down("sm")]: {
@@ -97,11 +96,11 @@ const useStyles = makeStyles((theme) => {
     },
     image: {
       width: "50rem",
-      height: "70rem",
+      height: "100%",
       objectFit: "cover",
       objectPosition: "center",
       [theme.breakpoints.down("sm")]: {
-        height: "60rem",
+        height: "100%",
       },
     },
   };
@@ -156,7 +155,11 @@ function Home() {
             >
               <Card
                 elevation={20}
-                style={{ width: "50rem", height: "auto", borderRadius: "2rem" }}
+                style={{
+                  width: "50rem",
+                  height: "70rem",
+                  borderRadius: "2rem",
+                }}
               >
                 <img src={heroSectionImage} className={classes.image} alt="" />
               </Card>

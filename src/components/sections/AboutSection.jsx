@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) => {
       // height: '75rem',
       display: "flex",
       alignItems: "center",
+      padding: "5rem 0rem",
       [theme.breakpoints.down("sm")]: {
         height: "auto",
       },
@@ -93,7 +94,7 @@ function AboutSection() {
             lg={6}
             style={{ display: "flex", justifyContent: "center" }}
           >
-            <img src={mockup} className={classes.image} alt="" />
+            <img src={mockup} className={classes.image} width="100%" alt="" />
           </Grid>
           <Grid
             item
