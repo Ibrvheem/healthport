@@ -160,6 +160,7 @@ function Home() {
                   height: "70rem",
                   borderRadius: "2rem",
                 }}
+
               >
                 <img src={heroSectionImage} className={classes.image} alt="" />
               </Card>

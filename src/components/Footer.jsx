@@ -9,8 +9,9 @@ import {
   Typography,
 } from "@material-ui/core";
 import React from "react";
-import image from "../../src/assets/Images/healthport-logo.png";
 import { Link } from "react-router-dom";
+import image from "../../src/assets/Images/Healthport-logo.png";
+
 const useStyles = makeStyles((theme) => {
   return {
     footer: {
@@ -122,7 +123,7 @@ function Footer() {
           <Grid item md={12} className={classes.flexCenter}>
             <img
               className={classes.footerLogo}
-              src="../../src/assets/Images/healthport-logo-full.png"
+              src="../../src/assets/Images/Healthport-logo-full.png"
               alt=""
             />
             <Link to="/contact">
