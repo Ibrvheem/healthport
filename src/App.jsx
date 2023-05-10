@@ -8,6 +8,8 @@ import Patients from "./components/pages/Patients";
 import Hostipals from "./components/pages/Hostipals";
 import Footer from "./components/Footer";
 import Oaas from "./components/pages/Oaas";
+import Contact from "./components/pages/Contact";
+import Oxiflow from "./components/pages/Oxiflow";
 
 const theme = createTheme({
   palette: {
@@ -43,6 +45,8 @@ function App() {
           <Route exact path="/patients" element={<Patients />} />
           <Route exact path="/hospitals" element={<Hostipals />} />
           <Route exact path="/oxygen" element={<Oaas />} />
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/oxiflow" element={<Oxiflow />} />
         </Routes>
         <Footer />
       </BrowserRouter>

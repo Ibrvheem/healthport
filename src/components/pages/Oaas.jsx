@@ -195,11 +195,9 @@ function Oaas() {
         <Grid container className={classes.gridFormContainer}>
           <Grid item md={6}>
             <Typography variant="h2" className={classes.h2}>
-              Create your HealthPort Breathe account to enjoy our{" "}
-              <span style={{ color: "#49b0b6", fontWeight: 700 }}>
-                seamless medical oxygen
-              </span>{" "}
-              service.{" "}
+              HealthPort Breathe is a Oxygen Service platform tailored to meet
+              the unique needs of health facilities . Our vision is a world
+              where everyone can Breathe easily.{" "}
             </Typography>
             {steps.map((step) => {
               return (

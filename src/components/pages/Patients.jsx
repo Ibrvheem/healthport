@@ -126,7 +126,13 @@ function Patients() {
               className={classes.patientsImage}
               style={{ height: "90%" }}
             >
-              <img src={oxygen} height="100%" width="100%" alt="" />
+              <img
+                style={{ objectFit: "cover" }}
+                src="../../src/assets/Images/pneumonia.png"
+                height="100%"
+                width="100%"
+                alt=""
+              />
             </Card>
           </Grid>
           <Grid item md={3} sm={6} xs={6}>
@@ -137,7 +143,7 @@ function Patients() {
             >
               <img
                 style={{ objectFit: "cover" }}
-                src={community}
+                src="../../src/assets/Images/handup.png"
                 height="100%"
                 width="100%"
                 alt=""
@@ -152,7 +158,7 @@ function Patients() {
             >
               <img
                 style={{ objectFit: "cover" }}
-                src={pregnant}
+                src="../../src/assets/Images/healthport-pregnancy.jpeg"
                 height="100%"
                 width="100%"
                 alt=""
@@ -167,7 +173,7 @@ function Patients() {
             >
               <img
                 style={{ objectFit: "cover" }}
-                src={chem}
+                src="../../src/assets/Images/girlOxygen.png"
                 height="100%"
                 width="100%"
                 alt=""

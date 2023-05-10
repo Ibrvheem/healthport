@@ -22,22 +22,22 @@ export const radioInput = [
   {
     title: "maternityPediatric",
     label: "Do you offer Maternity and Pediatric care clinic?",
-    radio: ["Yes", "NO"],
+    radio: ["Yes", "No"],
   },
   {
     title: "pulseOxiemeter",
     label: "Do you have a pulse oximeter per ward?",
-    radio: ["Yes", "NO"],
+    radio: ["Yes", "No"],
   },
   {
     title: "bedsidePiping",
     label: "Do you have bedside piping for oxygen delivery?",
-    radio: ["Yes", "NO"],
+    radio: ["Yes", "No"],
   },
   {
     title: "biomedicalTechnician",
     label: "Do you have a Biomedical Technician dedicated to your facility?",
-    radio: ["Yes", "NO"],
+    radio: ["Yes", "No"],
   },
 ];
 export const states = [
