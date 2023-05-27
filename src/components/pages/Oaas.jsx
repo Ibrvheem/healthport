@@ -1,7 +1,10 @@
 import {
+  Box,
   Button,
+  Collapse,
   Container,
   Grid,
+  IconButton,
   TextField,
   Typography,
   makeStyles, Select, MenuItem,
@@ -11,7 +14,8 @@ import { useForm, Controller } from "react-hook-form";
 import wave from "../../assets/Images/background-wave.png";
 import { radioInput, states, textInput } from "../../data.jsx/OaasData";
 import { request, gql } from 'graphql-request'
-
+import { Alert } from "@mui/material";
+import { Close } from "@material-ui/icons";
 
 
 const useStyles = makeStyles((theme) => {
@@ -183,6 +187,7 @@ function Oaas() {
   const [dropdownData, setDropdownData] = useState(states);
   const [radioInputForm, setRadioInputForm] = useState(radioInput);
   const [lgas, setLgas] = useState([]);
+  const [open, setOpen] = useState(true);
 
   const {
     control,
@@ -196,6 +201,7 @@ function Oaas() {
   const selectedState = watch("state");
 
   async function  onSubmit(data) {
+    setOpen(true);
     console.log(data);
 
     const variables = {input: {...data,
@@ -236,6 +242,7 @@ function Oaas() {
 
   return (
     <div className={classes.oaas}>
+
       <Container>
         <Typography variant="h1" className={classes.h1}>
           Create your HealthPort Breathe account to enjoy our{" "}
@@ -243,7 +250,38 @@ function Oaas() {
             seamless medical oxygen
           </span>{" "}
           service.{" "}
+
         </Typography>
+        <Box style={{  zIndeX: 2, width: "100%" }}>
+          <Collapse in={open}>
+            <Alert
+                style={{
+                  zIndex: "4",
+                  // top: "5rem",
+                  width: "100%",
+                  fontSize: "1.4rem",
+                }}
+                action={
+                  <IconButton
+                      aria-label="close"
+                      color="inherit"
+                      size="large"
+                      onClick={() => {
+                        setOpen(false);
+                      }}
+                  >
+                    <Close fontSize="inherit" />
+                  </IconButton>
+                }
+                sx={{ mb: 2 }}
+            >
+              <Typography variant="p" className={classes.h3}>
+                Successfully submitted your Registration!
+              </Typography>
+            </Alert>
+          </Collapse>
+        </Box>
+
         <Grid container className={classes.gridFormContainer}>
           <Grid item md={6}>
             <Typography variant="h2" className={classes.h2}>
