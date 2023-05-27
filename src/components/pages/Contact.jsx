@@ -1,11 +1,16 @@
 import {
+  Box,
   Button,
+  Collapse,
   Container,
   Grid,
+  IconButton,
   TextField,
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import { Close } from "@material-ui/icons";
+import { Alert } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -78,6 +83,8 @@ const useStyles = makeStyles((theme) => {
 });
 function Contact() {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -118,6 +125,37 @@ function Contact() {
   ];
   return (
     <div className={classes.contactUs}>
+      <Box style={{ position: "fixed", zIndeX: 2, width: "100%" }}>
+        <Collapse in={open}>
+          <Alert
+            style={{
+              position: "fixed",
+              zIndex: "4",
+              top: "8rem",
+              width: "100%",
+              fontSize: "1.4rem",
+            }}
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="large"
+                onClick={() => {
+                  setOpen(false);
+                }}
+              >
+                <Close fontSize="inherit" />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            <Typography variant="p" className={classes.h3}>
+              SUCCESS!
+            </Typography>
+          </Alert>
+        </Collapse>
+      </Box>
+
       <Container>
         <Grid container className={classes.gridFormContainer}>
           <Grid item md={6}>
@@ -191,6 +229,9 @@ function Contact() {
                 color="primary"
                 variant="contained"
                 className={classes.button}
+                onClick={() => {
+                  setOpen(true);
+                }}
               >
                 Submit
               </Button>
