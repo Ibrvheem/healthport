@@ -18,7 +18,6 @@ import { Alert } from "@mui/material";
 import { Close } from "@material-ui/icons";
 
 
-
 const useStyles = makeStyles((theme) => {
   return {
     oaas: {
@@ -188,8 +187,7 @@ function Oaas() {
   const [dropdownData, setDropdownData] = useState(states);
   const [radioInputForm, setRadioInputForm] = useState(radioInput);
   const [lgas, setLgas] = useState([]);
-  const [open, setOpen] = useState(false);
-
+  const [open, setOpen] = useState(true);
 
   const {
     control,
@@ -203,6 +201,7 @@ function Oaas() {
   const selectedState = watch("state");
 
   async function  onSubmit(data) {
+    setOpen(true);
     console.log(data);
 
     const variables = {input: {...data,
@@ -214,7 +213,6 @@ function Oaas() {
 
     const res = await request('http://localhost:5001/graphql', oaas, variables)
 
-    setOpen(true);
     console.log("res", res)
   }
 

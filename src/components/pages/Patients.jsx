@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => {
 
     p: {
       fontSize: "1.8rem",
-      color: "#002334",
+      color: "white",
       fontFamily: "Inter",
       [theme.breakpoints.down("sm")]: {
         fontSize: "2rem",
@@ -101,7 +101,11 @@ function Patients() {
         <Container>
           <Grid container className={classes.flex}>
             <Grid item md={6}>
-              <Typography variant="h1" className={classes.h1}>
+              <Typography
+                variant="h1"
+                className={classes.h1}
+                style={{ color: "white" }}
+              >
                 {" "}
                 Enjoy reliable and affordable medical oxygen access
               </Typography>

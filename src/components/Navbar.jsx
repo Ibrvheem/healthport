@@ -9,8 +9,8 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { HeadsetMicOutlined, MenuRounded } from "@material-ui/icons";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/Images/Healthport-logo.png";
 
 const useStyles = makeStyles((theme) => {
@@ -20,9 +20,16 @@ const useStyles = makeStyles((theme) => {
       display: "flex",
       justifyContent: "space-between",
       alignItems: "center",
+      position: "sticky",
+      top: 0,
+      zIndex: 1,
+      // width: "100%",
+      backgroundColor: "white",
+      // marginBottom: "40rem",
       fontSize: "1.3rem",
       fontFamily: "Inter",
       fontWeight: "600",
+      boxShadow: "0px 10px 13px -6px rgba(0,0,0,0.2)",
       color: "#002334",
       [theme.breakpoints.down("sm")]: {
         padding: ".5rem 4rem",
@@ -123,15 +130,18 @@ const menuLists = [
 function Navbar() {
   const [openMenu, setOpenMenu] = useState(false);
   const classes = useStyles();
+  const location = useLocation();
+
   function handleMenu() {
     setOpenMenu(!openMenu);
   }
 
+  useEffect(() => {}, []);
   return (
     <>
       <div className={classes.navbar}>
         <div className={classes.logo}>
-          <Link to="/">
+          <Link to="/" style={{ cursor: "pointer" }}>
             <img src={Logo} className={classes.logoImage} alt="" />
           </Link>
         </div>
@@ -142,7 +152,12 @@ function Navbar() {
                 <ListItem
                   key={menuList.name}
                   className={classes.listItem}
-                  style={{ width: "auto", borderLeft: menuList.borderLeft }}
+                  style={{
+                    width: "auto",
+                    borderLeft: menuList.borderLeft,
+                    color:
+                      location.pathname == menuList.path ? "#7e366f" : null,
+                  }}
                 >
                   <Link to={menuList.path}>{menuList.name}</Link>
                 </ListItem>

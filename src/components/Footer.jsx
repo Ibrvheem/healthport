@@ -15,6 +15,7 @@ import image from "../../src/assets/Images/Healthport-logo.png";
 const useStyles = makeStyles((theme) => {
   return {
     footer: {
+      cursor: "pointer",
       // height: "20rem",
       padding: "4rem 0rem",
       color: "white",
@@ -156,14 +157,20 @@ function Footer() {
                 support@healthport.com
               </ListItem>
               <ListItem className={classes.socialMedia}>
-                <span>
-                  <img
-                    src="../../src/assets/Icons/twitterHealthPort.png"
-                    height="40rem"
-                    width="40rem"
-                    alt=""
-                  />
-                </span>
+                <a
+                  href="https://twitter.com/HEALTHPORT2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>
+                    <img
+                      src="../../src/assets/Icons/twitterHealthPort.png"
+                      height="40rem"
+                      width="40rem"
+                      alt=""
+                    />
+                  </span>
+                </a>
                 <span>
                   <img
                     src="../../src/assets/Icons/facebookHealthPort.png"
@@ -172,22 +179,34 @@ function Footer() {
                     alt=""
                   />
                 </span>
-                <span>
-                  <img
-                    src="../../src/assets/Icons/instagramHealthPort.png"
-                    height="40rem"
-                    width="40rem"
-                    alt=""
-                  />
-                </span>
-                <span>
-                  <img
-                    src="../../src/assets/Icons/linkedinHealthPort.png"
-                    height="40rem"
-                    width="40rem"
-                    alt=""
-                  />
-                </span>
+                <a
+                  href="https://www.instagram.com/healthportnigeria/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>
+                    <img
+                      src="../../src/assets/Icons/instagramHealthPort.png"
+                      height="40rem"
+                      width="40rem"
+                      alt=""
+                    />
+                  </span>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/healthportoxygen/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>
+                    <img
+                      src="../../src/assets/Icons/linkedInHealthPort.png"
+                      height="40rem"
+                      width="40rem"
+                      alt=""
+                    />
+                  </span>
+                </a>
               </ListItem>
             </List>
           </Grid>{" "}

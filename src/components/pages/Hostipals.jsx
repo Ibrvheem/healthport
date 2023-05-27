@@ -132,10 +132,18 @@ function Hostipals() {
         <Container style={{ height: "100%" }}>
           <Grid container style={{ height: "100%" }}>
             <Grid item md={6} className={classes.mainWritings}>
-              <Typography variant="h3" className={classes.h3}>
+              <Typography
+                variant="h3"
+                className={classes.h3}
+                style={{ color: "white" }}
+              >
                 Digitized medical oxygen distribution
               </Typography>
-              <Typography variant="body1" className={classes.p}>
+              <Typography
+                variant="body1"
+                className={classes.p}
+                style={{ color: "white" }}
+              >
                 HealthPort uses a personalized hospital integration process to
                 ensure all installations are tailored to fit . We build on your
                 exisitng oxygen infrastructure to bring you quality oxygen

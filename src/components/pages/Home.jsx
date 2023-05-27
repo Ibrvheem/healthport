@@ -16,16 +16,24 @@ const useStyles = makeStyles((theme) => {
   return {
     h1: {
       fontSize: "8rem",
-      color: "#002334",
+      color: "white",
       marginBottom: "2rem",
       [theme.breakpoints.down("sm")]: {
         fontSize: "6rem",
       },
     },
+    h3: {
+      fontSize: "4rem",
+      color: "white",
+      margin: "2rem 0rem",
+      "@media (max-width:959.95px)": {
+        fontSize: "3rem",
+      },
+    },
 
     p: {
       fontSize: "2rem",
-      color: "#002334",
+      color: "white",
       fontFamily: "Inter",
       [theme.breakpoints.down("sm")]: {
         fontSize: "2rem",
@@ -161,7 +169,6 @@ function Home() {
                   height: "70rem",
                   borderRadius: "2rem",
                 }}
-
               >
                 <img src={heroSectionImage} className={classes.image} alt="" />
               </Card>

@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Oaas from "./components/pages/Oaas";
 import Contact from "./components/pages/Contact";
 import Oxiflow from "./components/pages/Oxiflow";
+import ScrollToTop from "../ScrollToTop";
 
 const theme = createTheme({
   palette: {
@@ -35,11 +36,13 @@ const theme = createTheme({
     },
   },
 });
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/patients" element={<Patients />} />
