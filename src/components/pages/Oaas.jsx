@@ -4,12 +4,15 @@ import {
   Grid,
   TextField,
   Typography,
-  makeStyles,
+  makeStyles, Select, MenuItem,
 } from "@material-ui/core";
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState, useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
 import wave from "../../assets/Images/background-wave.png";
 import { radioInput, states, textInput } from "../../data.jsx/OaasData";
+import { request, gql } from 'graphql-request'
+
+
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -150,21 +153,65 @@ const useStyles = makeStyles((theme) => {
     },
   };
 });
+
+const oaas = gql`
+  mutation Oaas ($input: AddOaasInput!) {
+    addOaas(input: $input) {
+      ... on Oaas {
+        id
+        email
+        firstName
+        lastName
+        bedSidePiping
+        bioDedicatedTechnician
+        canCreateAccount
+        createdDatetime
+        city
+        lga
+        pulseOximeterPerWard
+        maternityNPediatric
+        state
+        totalPatient
+      }
+    }
+  }
+`
+
 function Oaas() {
   const classes = useStyles();
   const [textInputForm, setTextInputForm] = useState(textInput);
   const [dropdownData, setDropdownData] = useState(states);
   const [radioInputForm, setRadioInputForm] = useState(radioInput);
   const [lgas, setLgas] = useState([]);
+
   const {
+    control,
+    watch,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   console.log(errors);
 
-  function onSubmit(data) {
+  const selectedState = watch("state");
+
+  async function  onSubmit(data) {
     console.log(data);
+
+    const variables = {input: {...data,
+        maternityNPediatric: getRadioValue(data.maternityNPediatric),
+        pulseOximeterPerWard: getRadioValue(data.pulseOximeterPerWard),
+        bedSidePiping: getRadioValue(data.bedSidePiping),
+        bioDedicatedTechnician: getRadioValue(data.bioDedicatedTechnician),
+    }}
+
+    const res = await request('http://localhost:5001/graphql', oaas, variables)
+
+    console.log("res", res)
+  }
+
+  const getRadioValue = (selectedValue) => {
+    return selectedValue === "Yes";
   }
   const steps = [
     "Request our Needs Assessment Form",
@@ -174,13 +221,18 @@ function Oaas() {
     "Reliable service and improved patient outcomes",
     "Know that your patients would be able to receive medical oxygen as soon as they arrive. With the OXIFLOW dashboard, we would direct patient traffic to your facility once you attain the HealthPort designated oxygen site status",
   ];
-  const handleStateChange = (event) => {
-    const selectedState = event.target.value;
+
+  useEffect(() => {
     const selectedLgas =
-      states.find((state) => state.alias === selectedState)?.lgas || [];
+        states.find((state) => state.alias === selectedState)?.lgas || [];
     setLgas(selectedLgas);
-    console.log(lgas);
-  };
+  }, [selectedState])
+
+  useEffect(() => {
+    const selectedLgas =
+        states.find((state) => state.alias === selectedState)?.lgas || [];
+    setLgas(selectedLgas);
+  }, [selectedState])
 
   return (
     <div className={classes.oaas}>
@@ -237,16 +289,14 @@ function Oaas() {
             })}
           </Grid>
           <Grid item md={5}>
-            <form className={classes.inputFormGroup}>
+            <form className={classes.inputFormGroup} onSubmit={handleSubmit(onSubmit)}>
               {textInputForm.map((item) => {
                 return (
                   <Grid item md={5} className={classes.inputForm}>
                     <label className={classes.label}>{item.label}</label>
                     <input
                       className={classes.input}
-                      {...register(item.title, {
-                        required: "This is required.",
-                      })}
+                      {...register(item.title, { required: "This is required.", maxLength: 100 })}
                     />
                     <Typography
                       className={classes.label}
@@ -257,32 +307,39 @@ function Oaas() {
                   </Grid>
                 );
               })}
+
               <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>State</label>
-                <select className={classes.input} onChange={handleStateChange}>
-                  <option value="" selected>
-                    Select State
-                  </option>
-                  {dropdownData.map((data) => {
-                    return (
-                      <>
-                        <option
-                          value={data.alias}
-                          {...register(data.alias, {
-                            required: "This is required.",
+                <Controller
+                    name="state"
+                    control={control}
+                    render={({ field }) =>
+                        <select className={classes.input} {...register("state", {
+                          required: "This is required.",
+                        })}>
+                          <option value="" selected>
+                            Select State
+                          </option>
+                          {dropdownData.map((data) => {
+                            return (
+                                <>
+                                  <option value={data.alias}>
+                                    {data.alias}
+                                  </option>
+                                  <Typography>{errors[data.alias]?.message}</Typography>
+                                </>
+                            );
                           })}
-                        >
-                          {data.state}
-                        </option>
-                        <Typography>{errors[data.alias]?.message}</Typography>
-                      </>
-                    );
-                  })}
-                </select>
+                        </select>
+                        }
+                />
+
               </Grid>
               <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>Local Government Area</label>
-                <select className={classes.input}>
+                <select className={classes.input} {...register("lga", {
+                  required: "This is required.",
+                })}>
                   <option value="" selected>
                     Select LGA
                   </option>
@@ -302,7 +359,7 @@ function Oaas() {
                 <input
                   type="checkbox"
                   className={classes.checkbox}
-                  {...register("city", { required: "This is required." })}
+                  {...register("canCreateAccount")}
                 />
                 <label className={classes.label}>
                   I have authority to create an account for my facility or
@@ -320,19 +377,27 @@ function Oaas() {
                           <div style={{ display: "flex", gap: "1rem" }}>
                             {radio.radio.map((aRadio) => {
                               return (
-                                <>
-                                  <input
-                                    {...register(radio.title, {
-                                      required: "This is required.",
-                                    })}
-                                    className={classes.radio}
-                                    type="radio"
-                                    value={radio.title}
+
+                                  <Controller
+                                      name={radio.title}
+                                      control={control}
+                                      render={({ field }) =>
+                                          <>
+                                          <input
+                                            {...register(radio.title, {
+                                              required: "This is required.",
+                                            })}
+                                            className={classes.radio}
+                                            name={radio.title}
+                                            value={aRadio}
+                                            type="radio"
+                                          />
+                                          <label className={classes.label}>
+                                            {aRadio}
+                                          </label>
+                                          </>
+                                      }
                                   />
-                                  <label className={classes.label}>
-                                    {aRadio}
-                                  </label>
-                                </>
                               );
                             })}
                           </div>
@@ -348,10 +413,7 @@ function Oaas() {
                   );
                 })}
               </Grid>
-              <Button
-                onClick={handleSubmit(onSubmit)}
-                className={[classes.button, classes.largeBtn]}
-              >
+              <Button type="submit" className={[classes.button, classes.largeBtn]}>
                 Submit
               </Button>
             </form>

@@ -15,27 +15,27 @@ export const textInput = [
 
 export const radioInput = [
   {
-    title: "monthlyPatients",
+    title: "totalPatient",
     label: "How many patients do you see at your facility monthly",
     radio: ["0-100", "100-200", "200-500", "500+"],
   },
   {
-    title: "maternityPediatric",
+    title: "maternityNPediatric",
     label: "Do you offer Maternity and Pediatric care clinic?",
     radio: ["Yes", "No"],
   },
   {
-    title: "pulseOxiemeter",
+    title: "pulseOximeterPerWard",
     label: "Do you have a pulse oximeter per ward?",
     radio: ["Yes", "No"],
   },
   {
-    title: "bedsidePiping",
+    title: "bedSidePiping",
     label: "Do you have bedside piping for oxygen delivery?",
     radio: ["Yes", "No"],
   },
   {
-    title: "biomedicalTechnician",
+    title: "bioDedicatedTechnician",
     label: "Do you have a Biomedical Technician dedicated to your facility?",
     radio: ["Yes", "No"],
   },
