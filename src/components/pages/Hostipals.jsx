@@ -25,10 +25,11 @@ const useStyles = makeStyles((theme) => {
 
     h6: {
       fontSize: "1.3rem",
-      fontWeight: 700,
+      fontWeight: "700",
       fontFamily: "inter",
       textAlign: "center",
       color: "#002334",
+      marginBottom: "3rem",
       [theme.breakpoints.down("sm")]: {
         fontWeight: 100,
       },
@@ -54,7 +55,7 @@ const useStyles = makeStyles((theme) => {
       margin: "3rem 3rem",
       backgroundColor: theme.palette.primary.main,
       borderRadius: "2rem",
-      height: "70rem",
+      height: "60rem",
       backgroundImage: `URL(${wave})`,
       backgroundSize: "contain",
       backgroundRepeat: "no-repeat",
@@ -180,7 +181,12 @@ function Hostipals() {
         <Typography
           variant="h6"
           className={classes.h6}
-          style={{ fontSize: "1.8rem", fontWeight: 400 }}
+          style={{
+            fontSize: "2rem",
+            fontWeight: 500,
+            marginBottom: 0,
+            marginTop: "6rem",
+          }}
         >
           How do we achieve this?
         </Typography>

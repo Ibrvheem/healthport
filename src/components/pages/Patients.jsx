@@ -8,8 +8,11 @@ import circle from "../../assets/Images/circle-wide.svg";
 import AboutSection from "../sections/AboutSection";
 import patient from "../../assets/Images/healthport-patient.jpeg";
 import pregnant from "../../assets/Images/healthport-pregnancy.jpeg";
+import girlOxygen from "../../assets/Images/girlOxygen.png";
 import oxygen from "../../assets/Images/healthport-oxygen.jpeg";
 import community from "../../assets/Images/healthport-community.jpeg";
+import pneumonia from "../../assets/Images/pneumonia.png";
+import handup from "../../assets/Images/handup.png";
 import ImageText from "./ImageText";
 
 const useStyles = makeStyles((theme) => {
@@ -132,7 +135,7 @@ function Patients() {
             >
               <img
                 style={{ objectFit: "cover" }}
-                src="../../src/assets/Images/pneumonia.png"
+                src={pneumonia}
                 height="100%"
                 width="100%"
                 alt=""
@@ -147,7 +150,7 @@ function Patients() {
             >
               <img
                 style={{ objectFit: "cover" }}
-                src="../../src/assets/Images/handup.png"
+                src={handup}
                 height="100%"
                 width="100%"
                 alt=""
@@ -162,7 +165,7 @@ function Patients() {
             >
               <img
                 style={{ objectFit: "cover" }}
-                src="../../src/assets/Images/healthport-pregnancy.jpeg"
+                src={pregnant}
                 height="100%"
                 width="100%"
                 alt=""

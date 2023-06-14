@@ -11,6 +11,11 @@ import {
 import React from "react";
 import { Link } from "react-router-dom";
 import image from "../../src/assets/Images/Healthport-logo.png";
+import twitter from "../../src/assets/Icons/twitterHealthPort.png";
+import linkedIn from "../../src/assets/Icons/linkedInHealthPort.png";
+import instagram from "../../src/assets/Icons/instagramHealthPort.png";
+import facebook from "../../src/assets/Icons/facebookHealthPort.png";
+import fullLogo from "../../src/assets/Images/Healthport-logo-full.png";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -122,11 +127,7 @@ function Footer() {
       <Container>
         <Grid container>
           <Grid item md={12} className={classes.flexCenter}>
-            <img
-              className={classes.footerLogo}
-              src="../../src/assets/Images/Healthport-logo-full.png"
-              alt=""
-            />
+            <img className={classes.footerLogo} src={fullLogo} alt="" />
             <Link to="/contact">
               <Button className={classes.button}>Contact Us</Button>
             </Link>
@@ -148,13 +149,13 @@ function Footer() {
                 className={classes.h6}
                 style={{ color: "white", opacity: 0.7, fontWeight: 400 }}
               >
-                (234) 80 555 5626
+                (234) 809 832 6250
               </ListItem>
               <ListItem
                 className={classes.h6}
                 style={{ color: "white", opacity: 0.7, fontWeigh: 100 }}
               >
-                support@healthport.com
+                careteam@healthportafrica.com
               </ListItem>
               <ListItem className={classes.socialMedia}>
                 <a
@@ -163,21 +164,11 @@ function Footer() {
                   rel="noopener noreferrer"
                 >
                   <span>
-                    <img
-                      src="../../src/assets/Icons/twitterHealthPort.png"
-                      height="40rem"
-                      width="40rem"
-                      alt=""
-                    />
+                    <img src={twitter} height="40rem" width="40rem" alt="" />
                   </span>
                 </a>
                 <span>
-                  <img
-                    src="../../src/assets/Icons/facebookHealthPort.png"
-                    height="40rem"
-                    width="40rem"
-                    alt=""
-                  />
+                  <img src={facebook} height="40rem" width="40rem" alt="" />
                 </span>
                 <a
                   href="https://www.instagram.com/healthportnigeria/"
@@ -185,12 +176,7 @@ function Footer() {
                   rel="noopener noreferrer"
                 >
                   <span>
-                    <img
-                      src="../../src/assets/Icons/instagramHealthPort.png"
-                      height="40rem"
-                      width="40rem"
-                      alt=""
-                    />
+                    <img src={instagram} height="40rem" width="40rem" alt="" />
                   </span>
                 </a>
                 <a
@@ -199,12 +185,7 @@ function Footer() {
                   rel="noopener noreferrer"
                 >
                   <span>
-                    <img
-                      src="../../src/assets/Icons/linkedInHealthPort.png"
-                      height="40rem"
-                      width="40rem"
-                      alt=""
-                    />
+                    <img src={linkedIn} height="40rem" width="40rem" alt="" />
                   </span>
                 </a>
               </ListItem>

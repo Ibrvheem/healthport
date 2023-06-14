@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => {
       fontSize: "8rem",
       color: "white",
       marginBottom: "2rem",
+      lineHeight: "8rem",
       [theme.breakpoints.down("sm")]: {
         fontSize: "6rem",
       },

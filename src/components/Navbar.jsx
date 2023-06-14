@@ -136,10 +136,24 @@ function Navbar() {
     setOpenMenu(!openMenu);
   }
 
-  useEffect(() => {}, []);
+  const [boxShadow, setBoxShadow] = useState("blue");
+
+  useEffect(() => {
+    function handleScroll() {
+      setBoxShadow(
+        window.pageYOffset > 0 ? "0 0 1em 0 rgb(131 135 137 / 25%)" : "none"
+      );
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <div className={classes.navbar}>
+      <div className={classes.navbar} style={{ boxShadow }}>
         <div className={classes.logo}>
           <Link to="/" style={{ cursor: "pointer" }}>
             <img src={Logo} className={classes.logoImage} alt="" />
@@ -169,8 +183,8 @@ function Navbar() {
           <List className={classes.list} disablePadding>
             <ListItem disableGutters>
               <HeadsetMicOutlined />{" "}
-              <span style={{ width: "135px", paddingLeft: "1rem" }}>
-                (234) 80 555 5626
+              <span style={{ width: "15rem", paddingLeft: "1rem" }}>
+                (234) 809 832 6250
               </span>
             </ListItem>
             <ListItem disableGutters>

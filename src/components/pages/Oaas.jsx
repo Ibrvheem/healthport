@@ -7,13 +7,15 @@ import {
   IconButton,
   TextField,
   Typography,
-  makeStyles, Select, MenuItem,
+  makeStyles,
+  Select,
+  MenuItem,
 } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import wave from "../../assets/Images/background-wave.png";
 import { radioInput, states, textInput } from "../../data.jsx/OaasData";
-import { request, gql } from 'graphql-request'
+import { request, gql } from "graphql-request";
 import { Alert } from "@mui/material";
 import { Close } from "@material-ui/icons";
 
@@ -159,7 +161,7 @@ const useStyles = makeStyles((theme) => {
 });
 
 const oaas = gql`
-  mutation Oaas ($input: AddOaasInput!) {
+  mutation Oaas($input: AddOaasInput!) {
     addOaas(input: $input) {
       ... on Oaas {
         id
@@ -179,7 +181,7 @@ const oaas = gql`
       }
     }
   }
-`
+`;
 
 function Oaas() {
   const classes = useStyles();
@@ -200,15 +202,19 @@ function Oaas() {
 
   const selectedState = watch("state");
 
-  async function  onSubmit(data) {
+  async function onSubmit(data) {
+    setOpen(true);
     console.log(data);
 
-    const variables = {input: {...data,
+    const variables = {
+      input: {
+        ...data,
         maternityNPediatric: getRadioValue(data.maternityNPediatric),
         pulseOximeterPerWard: getRadioValue(data.pulseOximeterPerWard),
         bedSidePiping: getRadioValue(data.bedSidePiping),
         bioDedicatedTechnician: getRadioValue(data.bioDedicatedTechnician),
-    }}
+      },
+    };
 
     const res = await request('http://localhost:5001/graphql', oaas, variables)
     setOpen(true);
@@ -217,7 +223,7 @@ function Oaas() {
 
   const getRadioValue = (selectedValue) => {
     return selectedValue === "Yes";
-  }
+  };
   const steps = [
     "Request our Needs Assessment Form",
     "Tells us a little bit about your health facility and oxygen requirements",
@@ -229,19 +235,18 @@ function Oaas() {
 
   useEffect(() => {
     const selectedLgas =
-        states.find((state) => state.alias === selectedState)?.lgas || [];
+      states.find((state) => state.alias === selectedState)?.lgas || [];
     setLgas(selectedLgas);
-  }, [selectedState])
+  }, [selectedState]);
 
   useEffect(() => {
     const selectedLgas =
-        states.find((state) => state.alias === selectedState)?.lgas || [];
+      states.find((state) => state.alias === selectedState)?.lgas || [];
     setLgas(selectedLgas);
-  }, [selectedState])
+  }, [selectedState]);
 
   return (
     <div className={classes.oaas}>
-
       <Container>
         <Typography variant="h1" className={classes.h1}>
           Create your HealthPort Breathe account to enjoy our{" "}
@@ -249,30 +254,29 @@ function Oaas() {
             seamless medical oxygen
           </span>{" "}
           service.{" "}
-
         </Typography>
-        <Box style={{  zIndeX: 2, width: "100%" }}>
+        <Box style={{ zIndeX: 2, width: "100%" }}>
           <Collapse in={open}>
             <Alert
-                style={{
-                  zIndex: "4",
-                  // top: "5rem",
-                  width: "100%",
-                  fontSize: "1.4rem",
-                }}
-                action={
-                  <IconButton
-                      aria-label="close"
-                      color="inherit"
-                      size="large"
-                      onClick={() => {
-                        setOpen(false);
-                      }}
-                  >
-                    <Close fontSize="inherit" />
-                  </IconButton>
-                }
-                sx={{ mb: 2 }}
+              style={{
+                zIndex: "4",
+                // top: "5rem",
+                width: "100%",
+                fontSize: "1.4rem",
+              }}
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="large"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <Close fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
             >
               <Typography variant="p" className={classes.h3}>
                 Successfully submitted your Registration!
@@ -285,8 +289,8 @@ function Oaas() {
           <Grid item md={6}>
             <Typography variant="h2" className={classes.h2}>
               HealthPort Breathe is a Oxygen Service platform tailored to meet
-              the unique needs of health facilities . Our vision is a world
-              where everyone can Breathe easily.{" "}
+              the unique needs of health facilities. Our vision is a world where
+              everyone can Breathe easily.{" "}
             </Typography>
             {steps.map((step) => {
               return (
@@ -326,14 +330,20 @@ function Oaas() {
             })}
           </Grid>
           <Grid item md={5}>
-            <form className={classes.inputFormGroup} onSubmit={handleSubmit(onSubmit)}>
+            <form
+              className={classes.inputFormGroup}
+              onSubmit={handleSubmit(onSubmit)}
+            >
               {textInputForm.map((item) => {
                 return (
                   <Grid item md={5} className={classes.inputForm}>
                     <label className={classes.label}>{item.label}</label>
                     <input
                       className={classes.input}
-                      {...register(item.title, { required: "This is required.", maxLength: 100 })}
+                      {...register(item.title, {
+                        required: "This is required.",
+                        maxLength: 100,
+                      })}
                     />
                     <Typography
                       className={classes.label}
@@ -346,37 +356,50 @@ function Oaas() {
               })}
 
               <Grid item md={5} className={classes.inputForm}>
+                <label className={classes.label}>Hospital Name</label>
+                <input
+                  className={classes.input}
+                  {...register("hospital", { required: "This is required." })}
+                />
+              </Grid>
+              <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>State</label>
                 <Controller
-                    name="state"
-                    control={control}
-                    render={({ field }) =>
-                        <select className={classes.input} {...register("state", {
-                          required: "This is required.",
-                        })}>
-                          <option value="" selected>
-                            Select State
-                          </option>
-                          {dropdownData.map((data) => {
-                            return (
-                                <>
-                                  <option value={data.alias}>
-                                    {data.alias}
-                                  </option>
-                                  <Typography>{errors[data.alias]?.message}</Typography>
-                                </>
-                            );
-                          })}
-                        </select>
-                        }
+                  name="state"
+                  control={control}
+                  render={({ field }) => (
+                    <select
+                      style={{ textTransform: "capitalize" }}
+                      className={classes.input}
+                      {...register("state", {
+                        required: "This is required.",
+                      })}
+                    >
+                      <option value="" selected>
+                        Select State
+                      </option>
+                      {dropdownData.map((data) => {
+                        return (
+                          <>
+                            <option value={data.alias}>{data.alias}</option>
+                            <Typography>
+                              {errors[data.alias]?.message}
+                            </Typography>
+                          </>
+                        );
+                      })}
+                    </select>
+                  )}
                 />
-
               </Grid>
               <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>Local Government Area</label>
-                <select className={classes.input} {...register("lga", {
-                  required: "This is required.",
-                })}>
+                <select
+                  className={classes.input}
+                  {...register("lga", {
+                    required: "This is required.",
+                  })}
+                >
                   <option value="" selected>
                     Select LGA
                   </option>
@@ -392,6 +415,7 @@ function Oaas() {
                   {...register("city", { required: "This is required." })}
                 />
               </Grid>
+
               <Grid item md={12} className={classes.checkboxForm}>
                 <input
                   type="checkbox"
@@ -414,27 +438,26 @@ function Oaas() {
                           <div style={{ display: "flex", gap: "1rem" }}>
                             {radio.radio.map((aRadio) => {
                               return (
-
-                                  <Controller
-                                      name={radio.title}
-                                      control={control}
-                                      render={({ field }) =>
-                                          <>
-                                          <input
-                                            {...register(radio.title, {
-                                              required: "This is required.",
-                                            })}
-                                            className={classes.radio}
-                                            name={radio.title}
-                                            value={aRadio}
-                                            type="radio"
-                                          />
-                                          <label className={classes.label}>
-                                            {aRadio}
-                                          </label>
-                                          </>
-                                      }
-                                  />
+                                <Controller
+                                  name={radio.title}
+                                  control={control}
+                                  render={({ field }) => (
+                                    <>
+                                      <input
+                                        {...register(radio.title, {
+                                          required: "This is required.",
+                                        })}
+                                        className={classes.radio}
+                                        name={radio.title}
+                                        value={aRadio}
+                                        type="radio"
+                                      />
+                                      <label className={classes.label}>
+                                        {aRadio}
+                                      </label>
+                                    </>
+                                  )}
+                                />
                               );
                             })}
                           </div>
@@ -450,7 +473,10 @@ function Oaas() {
                   );
                 })}
               </Grid>
-              <Button type="submit" className={[classes.button, classes.largeBtn]}>
+              <Button
+                type="submit"
+                className={[classes.button, classes.largeBtn]}
+              >
                 Submit
               </Button>
             </form>
