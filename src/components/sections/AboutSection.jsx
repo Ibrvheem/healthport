@@ -5,8 +5,11 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
-import React from "react";
-import mockup from "../../assets/Images/mock-up.png";
+import React, { useEffect } from "react";
+// import mockup from "../../assets/Images/doctor-smiling.png";
+import mockup from "../../assets/Images/4.png";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -31,7 +34,7 @@ const useStyles = makeStyles((theme) => {
       // height: '75rem',
       display: "flex",
       alignItems: "center",
-      padding: "5rem 0rem",
+      paddingTop: "5rem",
       [theme.breakpoints.down("sm")]: {
         height: "auto",
       },
@@ -81,10 +84,17 @@ const useStyles = makeStyles((theme) => {
 });
 
 function AboutSection() {
+  useEffect(() => {
+    Aos.init();
+  });
   const classes = useStyles();
   return (
     <>
-      <div className={classes.aboutSection}>
+      <div
+        className={classes.aboutSection}
+        data-aos="fade-up"
+        data-aos-duration="3000"
+      >
         <Grid container className={classes.gridContainer}>
           <Grid
             item

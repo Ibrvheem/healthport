@@ -8,9 +8,13 @@ import {
   Typography,
 } from "@material-ui/core";
 import wave from "../../assets/Images/background-wave.png";
-import heroSectionImage from "../../assets/Images/hero-section-image.png";
+// import heroSectionImage from "../../assets/Images/girl-w-oxygen-mask.jpg";
+import heroSectionImage from "../../assets/Images/1.jpeg";
 import circle from "../../assets/Images/circle.svg";
 import AboutSection from "../sections/AboutSection";
+import { useEffect } from "react";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -104,7 +108,7 @@ const useStyles = makeStyles((theme) => {
       },
     },
     image: {
-      width: "50rem",
+      width: "100%",
       height: "100%",
       objectFit: "cover",
       objectPosition: "center",
@@ -117,10 +121,17 @@ const useStyles = makeStyles((theme) => {
 
 function Home() {
   const classes = useStyles();
+  useEffect(() => {
+    Aos.init();
+  });
 
   return (
     <>
-      <div className={classes.heroSection}>
+      <div
+        className={classes.heroSection}
+        data-aos="fade-up"
+        data-aos-duration="3000"
+      >
         <Container>
           <Grid
             container
@@ -166,7 +177,7 @@ function Home() {
               <Card
                 elevation={20}
                 style={{
-                  width: "50rem",
+                  width: "55rem",
                   height: "70rem",
                   borderRadius: "2rem",
                 }}

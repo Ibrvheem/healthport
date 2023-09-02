@@ -1,5 +1,8 @@
 import { Container, Grid, Typography, makeStyles } from "@material-ui/core";
+import Aos from "aos";
 import React, { useState } from "react";
+import { useEffect } from "react";
+import "aos/dist/aos.css";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -58,8 +61,11 @@ const useStyles = makeStyles((theme) => {
 function ImageText(props) {
   const [imageFirst, setImageFirst] = useState(props.imageFirst);
   const classes = useStyles();
+  useEffect(() => {
+    Aos.init();
+  });
   return (
-    <div>
+    <div data-aos="fade-up" data-aos-duration="3000">
       <Container>
         <Grid
           container

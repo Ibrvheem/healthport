@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
+  Card,
   Container,
   Grid,
   makeStyles,
@@ -9,8 +10,14 @@ import {
 import circle from "../../assets/Images/circle.svg";
 import wave from "../../assets/Images/background-wave.png";
 import ImageText from "./ImageText";
-import motherChildren from "../../assets/Images/healthport-MotherChildren.jpeg";
-
+// import checkUp from "../../assets/Images/checkup.jpg";
+// import oxygenProduction from "../../assets/Images/oxygen-production.jpg";
+import oxygenProduction from "../../assets/Images/7.jpeg";
+// import oximeter from "../../assets/Images/oximeter.jpg";
+import digitzedOxygen from "../../assets/Images/8.jpeg";
+import diagnostics from "../../assets/Images/12.jpeg";
+import oxygenService from "../../assets/Images/2.png";
+import digitizedDistribution from "../../assets/Images/8.jpeg";
 const useStyles = makeStyles((theme) => {
   return {
     h1: {
@@ -21,6 +28,18 @@ const useStyles = makeStyles((theme) => {
       [theme.breakpoints.down("sm")]: {
         fontSize: "2.7rem",
       },
+    },
+    mainImageContainer: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    mainImage: {
+      width: "100%",
+      borderRadius: "3rem",
+      objectFit: "cover",
+      boxShadow:
+        "0px 10px 13px -6px rgba(0,0,0,0.2), 0px 20px 31px 3px rgba(0,0,0,0.14), 0px 8px 38px 7px rgba(0,0,0,0.12)",
     },
 
     h6: {
@@ -158,7 +177,14 @@ function Hostipals() {
                 Sign up now
               </Button>
             </Grid>
-            <Grid item md={6}></Grid>
+            <Grid item md={6} className={classes.mainImageContainer}>
+              <img
+                src={digitizedDistribution}
+                alt=""
+                width={"100%"}
+                className={classes.mainImage}
+              />
+            </Grid>
           </Grid>
         </Container>
       </div>
@@ -191,18 +217,20 @@ function Hostipals() {
           How do we achieve this?
         </Typography>
         <ImageText
-          image={motherChildren}
+          image={diagnostics}
           header="Improved diagnostic capture rates"
           text="We work with your clinical team to create replicable best practices and treatment protocols. All patients are assessed adequately upon admission and we use this clinical data to guide oxygen therapy management."
         />
         <ImageText
           imageFirst={true}
+          image={oxygenProduction}
           header="Oxygen production onsite or near-site"
           text="We know that electricity is not reliable and transportation can quickly affect the cost of oxygen to your facility and the patients- so we factored these in our solution. Enjoy seamless oxygen distribution with minimal to zero upfront costs with HealthPort as your Oxygen service provider"
         />
         <ImageText
           imageFirst={false}
-          header="Digitized Oxygen Service"
+          image={oxygenService}
+          header="Oxygen Service"
           text="We work with different global partners to bring you innovative oxygen equipment, diagnostic tools and digitized inventory control. With these you can safely forecast your oxygen needs, plan your supplies and reduce your oxygen overhead costs."
         />
       </div>

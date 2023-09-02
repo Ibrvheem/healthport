@@ -3,17 +3,27 @@ import Card from "@material-ui/core/Card";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import React from "react";
-import chem from "../../assets/Images/healthport-chem.jpeg";
 import circle from "../../assets/Images/circle-wide.svg";
 import AboutSection from "../sections/AboutSection";
-import patient from "../../assets/Images/healthport-patient.jpeg";
-import pregnant from "../../assets/Images/healthport-pregnancy.jpeg";
+// import patient from "../../assets/Images/healthport-patient.jpeg";
+// import pregnant from "../../assets/Images/healthport-pregnancy.jpeg";
 import girlOxygen from "../../assets/Images/girlOxygen.png";
 import oxygen from "../../assets/Images/healthport-oxygen.jpeg";
 import community from "../../assets/Images/healthport-community.jpeg";
-import pneumonia from "../../assets/Images/pneumonia.png";
-import handup from "../../assets/Images/handup.png";
+// import pneumonia from "../../assets/Images/pneumonia.png";
+// import handup from "../../assets/Images/handup.png";
 import ImageText from "./ImageText";
+import "aos/dist/aos.css";
+import Aos from "aos";
+import pregnantWoman from "../../assets/Images/5.jpeg";
+import babyFeet from "../../assets/Images/3.jpeg";
+import fatherChild from "../../assets/Images/9.jpeg";
+import doctor from "../../assets/Images/11.jpeg";
+import patientCheckup from "../../assets/Images/6.jpeg";
+
+
+
+import { useEffect } from "react";
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -98,6 +108,9 @@ const useStyles = makeStyles((theme) => {
 
 function Patients() {
   const classes = useStyles();
+  useEffect(() => {
+    Aos.init();
+  });
   return (
     <div className={classes.patients}>
       <div className={classes.patientsHeader}>
@@ -126,16 +139,18 @@ function Patients() {
         </Container>
       </div>
       <div className={classes.patientsImages}>
-        <Grid container spacing={1}>
+        <Grid container spacing={1} style={{ height: "70vh" }}>
           <Grid item md={3} sm={6} xs={6}>
             <Card
               elevation={0}
               className={classes.patientsImage}
               style={{ height: "90%" }}
+              data-aos="fade-up"
+              data-aos-duration="3000"
             >
               <img
-                style={{ objectFit: "cover" }}
-                src={pneumonia}
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                src={pregnantWoman}
                 height="100%"
                 width="100%"
                 alt=""
@@ -147,10 +162,12 @@ function Patients() {
               elevation={0}
               className={classes.patientsImage}
               style={{ height: "100%" }}
+              data-aos="fade-up"
+              data-aos-duration="3000"
             >
               <img
-                style={{ objectFit: "cover" }}
-                src={handup}
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                src={babyFeet}
                 height="100%"
                 width="100%"
                 alt=""
@@ -162,10 +179,12 @@ function Patients() {
               elevation={0}
               className={classes.patientsImage}
               style={{ height: "70%" }}
+              data-aos="fade-up"
+              data-aos-duration="3000"
             >
               <img
-                style={{ objectFit: "cover" }}
-                src={pregnant}
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                src={fatherChild}
                 height="100%"
                 width="100%"
                 alt=""
@@ -177,10 +196,12 @@ function Patients() {
               elevation={0}
               className={classes.patientsImage}
               style={{ height: "90%" }}
+              data-aos="fade-up"
+              data-aos-duration="3000"
             >
               <img
-                style={{ objectFit: "cover" }}
-                src="../../src/assets/Images/girlOxygen.png"
+                style={{ objectFit: "cover", objectPosition: "right" }}
+                src={doctor}
                 height="100%"
                 width="100%"
                 alt=""
@@ -208,7 +229,7 @@ function Patients() {
 
       <div>
         <ImageText
-          image={patient}
+          image={patientCheckup}
           header="HealthPort works within each community to advocate for quality patient care and timely patient presentation to the hospital"
           text="With our hospital and payment navigator partners you do not have to worry about inability to pay for oxygen services before care is rendered to you or your loved one."
         />
