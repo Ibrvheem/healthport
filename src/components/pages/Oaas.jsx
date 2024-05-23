@@ -1,16 +1,4 @@
-import {
-  Box,
-  Button,
-  Collapse,
-  Container,
-  Grid,
-  IconButton,
-  TextField,
-  Typography,
-  makeStyles,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
+import { Box, Button, Collapse, Container, Grid, IconButton, TextField, Typography, makeStyles, Select, MenuItem } from "@material-ui/core";
 import React, { useState, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import wave from "../../assets/Images/background-wave.png";
@@ -18,7 +6,6 @@ import { radioInput, states, textInput } from "../../data.jsx/OaasData";
 import { request, gql } from "graphql-request";
 import { Alert } from "@mui/material";
 import { Close } from "@material-ui/icons";
-
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -206,19 +193,23 @@ function Oaas() {
     setOpen(true);
     console.log(data);
 
-    const variables = {
-      input: {
-        ...data,
-        maternityNPediatric: getRadioValue(data.maternityNPediatric),
-        pulseOximeterPerWard: getRadioValue(data.pulseOximeterPerWard),
-        bedSidePiping: getRadioValue(data.bedSidePiping),
-        bioDedicatedTechnician: getRadioValue(data.bioDedicatedTechnician),
-      },
-    };
+    // const variables = {
+    //   input: {
+    //     ...data,
+    //     maternityNPediatric: getRadioValue(data.maternityNPediatric),
+    //     pulseOximeterPerWard: getRadioValue(data.pulseOximeterPerWard),
+    //     bedSidePiping: getRadioValue(data.bedSidePiping),
+    //     bioDedicatedTechnician: getRadioValue(data.bioDedicatedTechnician),
+    //   },
+    // };
 
-    const res = await request('http://localhost:5001/graphql', oaas, variables)
+    // const res = await request('http://localhost:5001/graphql', oaas, variables)
     setOpen(true);
-    console.log("res", res)
+    // newFunction();
+
+    function newFunction() {
+      console.log("res", res);
+    }
   }
 
   const getRadioValue = (selectedValue) => {
@@ -234,14 +225,12 @@ function Oaas() {
   ];
 
   useEffect(() => {
-    const selectedLgas =
-      states.find((state) => state.alias === selectedState)?.lgas || [];
+    const selectedLgas = states.find((state) => state.alias === selectedState)?.lgas || [];
     setLgas(selectedLgas);
   }, [selectedState]);
 
   useEffect(() => {
-    const selectedLgas =
-      states.find((state) => state.alias === selectedState)?.lgas || [];
+    const selectedLgas = states.find((state) => state.alias === selectedState)?.lgas || [];
     setLgas(selectedLgas);
   }, [selectedState]);
 
@@ -249,11 +238,7 @@ function Oaas() {
     <div className={classes.oaas}>
       <Container>
         <Typography variant="h1" className={classes.h1}>
-          Create your HealthPort Breathe account to enjoy our{" "}
-          <span style={{ color: "#49b0b6", fontWeight: 700 }}>
-            seamless medical oxygen
-          </span>{" "}
-          service.{" "}
+          Create your HealthPort Breathe account to enjoy our <span style={{ color: "#49b0b6", fontWeight: 700 }}>seamless medical oxygen</span> service.{" "}
         </Typography>
         <Box style={{ zIndeX: 2, width: "100%" }}>
           <Collapse in={open}>
@@ -288,33 +273,15 @@ function Oaas() {
         <Grid container className={classes.gridFormContainer}>
           <Grid item md={6}>
             <Typography variant="h2" className={classes.h2}>
-              HealthPort Breathe is a Oxygen Service platform tailored to meet
-              the unique needs of health facilities. Our vision is a world where
-              everyone can Breathe easily.{" "}
+              HealthPort Breathe is a Oxygen Service platform tailored to meet the unique needs of health facilities. Our vision is a world where everyone can Breathe easily.{" "}
             </Typography>
             {steps.map((step) => {
               return (
-                <span
-                  style={{ display: "flex", gap: "1rem", margin: "3rem 0rem" }}
-                >
+                <span style={{ display: "flex", gap: "1rem", margin: "3rem 0rem" }}>
                   <span style={{ color: "#00e1b7" }}>
-                    <span
-                      data-hs-icon-hubl="true"
-                      style={{ display: "inlineBlock", fill: "#00AE86" }}
-                    >
-                      <span
-                        id="hs_cos_wrapper_widget_1662113991963_"
-                        class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon"
-                        data-hs-cos-general-type="widget"
-                        data-hs-cos-type="icon"
-                      >
-                        <svg
-                          version="1.0"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 512 512"
-                          height="20"
-                          aria-hidden="true"
-                        >
+                    <span data-hs-icon-hubl="true" style={{ display: "inlineBlock", fill: "#00AE86" }}>
+                      <span id="hs_cos_wrapper_widget_1662113991963_" class="hs_cos_wrapper hs_cos_wrapper_widget hs_cos_wrapper_type_icon" data-hs-cos-general-type="widget" data-hs-cos-type="icon">
+                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="20" aria-hidden="true">
                           <g id="Check Circle2_layer">
                             <path d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z"></path>
                           </g>
@@ -330,10 +297,7 @@ function Oaas() {
             })}
           </Grid>
           <Grid item md={5}>
-            <form
-              className={classes.inputFormGroup}
-              onSubmit={handleSubmit(onSubmit)}
-            >
+            <form className={classes.inputFormGroup} onSubmit={handleSubmit(onSubmit)}>
               {textInputForm.map((item) => {
                 return (
                   <Grid item md={5} className={classes.inputForm}>
@@ -345,10 +309,7 @@ function Oaas() {
                         maxLength: 100,
                       })}
                     />
-                    <Typography
-                      className={classes.label}
-                      style={{ color: "red" }}
-                    >
+                    <Typography className={classes.label} style={{ color: "red" }}>
                       {errors[item.title]?.message}
                     </Typography>
                   </Grid>
@@ -357,10 +318,7 @@ function Oaas() {
 
               <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>Hospital Name</label>
-                <input
-                  className={classes.input}
-                  {...register("hospital", { required: "This is required." })}
-                />
+                <input className={classes.input} {...register("hospital", { required: "This is required." })} />
               </Grid>
               <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>State</label>
@@ -382,9 +340,7 @@ function Oaas() {
                         return (
                           <>
                             <option value={data.alias}>{data.alias}</option>
-                            <Typography>
-                              {errors[data.alias]?.message}
-                            </Typography>
+                            <Typography>{errors[data.alias]?.message}</Typography>
                           </>
                         );
                       })}
@@ -410,22 +366,12 @@ function Oaas() {
               </Grid>
               <Grid item md={5} className={classes.inputForm}>
                 <label className={classes.label}>City</label>
-                <input
-                  className={classes.input}
-                  {...register("city", { required: "This is required." })}
-                />
+                <input className={classes.input} {...register("city", { required: "This is required." })} />
               </Grid>
 
               <Grid item md={12} className={classes.checkboxForm}>
-                <input
-                  type="checkbox"
-                  className={classes.checkbox}
-                  {...register("canCreateAccount")}
-                />
-                <label className={classes.label}>
-                  I have authority to create an account for my facility or
-                  clinic
-                </label>
+                <input type="checkbox" className={classes.checkbox} {...register("canCreateAccount")} />
+                <label className={classes.label}>I have authority to create an account for my facility or clinic</label>
               </Grid>
               <Grid item md={12} className={classes.radioForm}>
                 {radioInputForm.map((radio) => {
@@ -452,9 +398,7 @@ function Oaas() {
                                         value={aRadio}
                                         type="radio"
                                       />
-                                      <label className={classes.label}>
-                                        {aRadio}
-                                      </label>
+                                      <label className={classes.label}>{aRadio}</label>
                                     </>
                                   )}
                                 />
@@ -462,10 +406,7 @@ function Oaas() {
                             })}
                           </div>
                         </Grid>
-                        <Typography
-                          className={classes.label}
-                          style={{ color: "red" }}
-                        >
+                        <Typography className={classes.label} style={{ color: "red" }}>
                           {errors[radio.title]?.message}
                         </Typography>
                       </Grid>
@@ -473,10 +414,7 @@ function Oaas() {
                   );
                 })}
               </Grid>
-              <Button
-                type="submit"
-                className={[classes.button, classes.largeBtn]}
-              >
+              <Button type="submit" className={[classes.button, classes.largeBtn]}>
                 Submit
               </Button>
             </form>
